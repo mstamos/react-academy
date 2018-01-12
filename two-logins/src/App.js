@@ -12,6 +12,7 @@ export default class App extends React.Component {
 
     this.onUsernameChange = this.onUsernameChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   onUsernameChange(event) {
@@ -24,6 +25,10 @@ export default class App extends React.Component {
     this.setState({
       password: event.target.value
     });
+  }
+
+  onButtonClick() {
+    alert(this.state.username);
   }
 
   render() {
@@ -68,7 +73,7 @@ export default class App extends React.Component {
               name="psw"
             />
           </p>
-          <button>Submit</button>
+          <button onClick={this.onButtonClick}>Submit</button>
         </div>
       </div>
     )
