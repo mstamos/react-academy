@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
 class Counter extends React.Component {
   constructor() {
@@ -25,9 +26,10 @@ class Counter extends React.Component {
   }
 
    render () {
+    const counterColor = this.state.counter > 10 ? 'red' : '';
     return (
       <div>
-        Counter: {this.state.counter}
+        <div className={counterColor}>Counter: {this.state.counter}</div>
         <p></p>
         <button onClick={this.increaseCounter}> + </button>
         <button onClick={this.decreaseCounter}> - </button>
