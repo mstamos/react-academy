@@ -1,0 +1,20 @@
+<html>
+
+  <head>
+    <title>React Academy</title>
+  </head>
+  <h1>React Academy </h1>
+  <script>
+
+    fetch('http://localhost:3000/artists')
+      .then(response => response.text())
+      .then(data => {
+        debugger
+      })
+      // Close server to show the error
+      .catch(error => {
+        // Close server
+        alert('Something went wrong');
+      })
+  </script>
+</html>
