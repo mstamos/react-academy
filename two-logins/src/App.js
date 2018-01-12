@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import MainLogin from './mainLogin';
 
 export default class App extends React.Component {
   constructor() {
@@ -15,6 +16,10 @@ export default class App extends React.Component {
     this.onButtonClick = this.onButtonClick.bind(this);
   }
 
+  onButtonClick() {
+    alert(this.state.username);
+  }
+
   onUsernameChange(event) {
     this.setState({
       username: event.target.value
@@ -25,10 +30,6 @@ export default class App extends React.Component {
     this.setState({
       password: event.target.value
     });
-  }
-
-  onButtonClick() {
-    alert(this.state.username);
   }
 
   render() {
@@ -51,30 +52,17 @@ export default class App extends React.Component {
             name="psw"
           />
           <span className='right-space'/>
-          <button>Submit</button>
-        </div>
-
-        <div className='main-login'>
-          <p>
-            <input
-              value={this.state.username}
-              onChange={this.onUsernameChange}
-              type="text"
-              placeholder="Enter Username"
-              name="uname"
-            />
-          </p>
-          <p>
-            <input
-              value={this.state.password}
-              onChange={this.onPasswordChange}
-              type="password"
-              placeholder="Enter Password"
-              name="psw"
-            />
-          </p>
           <button onClick={this.onButtonClick}>Submit</button>
         </div>
+
+        <MainLogin
+          username={this.state.username}
+          password={this.state.password}
+          onPasswordChange={this.onPasswordChange}
+          onUsernameChange={this.onUsernameChange}
+          onButtonClick={this.onButtonClick}
+        />
+
       </div>
     )
   }
