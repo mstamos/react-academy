@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import MainLogin from './mainLogin';
+import RightTopLogin from './rightTopLogin';
 
 export default class App extends React.Component {
   constructor() {
@@ -35,26 +36,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div className='container'>
-        <div className='right-top-login'>
-          <input
-            value={this.state.username}
-            onChange={this.onUsernameChange}
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-          />
-          <span className='right-space'/>
-          <input
-            value={this.state.password}
-            onChange={this.onPasswordChange}
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-          />
-          <span className='right-space'/>
-          <button onClick={this.onButtonClick}>Submit</button>
-        </div>
-
+        <RightTopLogin
+          username={this.state.username}
+          password={this.state.password}
+          onPasswordChange={this.onPasswordChange}
+          onUsernameChange={this.onUsernameChange}
+          onButtonClick={this.onButtonClick}
+        />
         <MainLogin
           username={this.state.username}
           password={this.state.password}
@@ -62,7 +50,6 @@ export default class App extends React.Component {
           onUsernameChange={this.onUsernameChange}
           onButtonClick={this.onButtonClick}
         />
-
       </div>
     )
   }
