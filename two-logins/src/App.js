@@ -12,6 +12,16 @@ export default class App extends React.Component {
           <span className='right-space'/>
           <button>Submit</button>
         </div>
+
+        <div className='main-login'>
+          <p>
+            <input type="text" placeholder="Enter Username" name="uname"/>
+          </p>
+          <p>
+            <input type="password" placeholder="Enter Password" name="psw"/>
+          </p>
+          <button>Submit</button>
+        </div>
       </div>
     )
   }
