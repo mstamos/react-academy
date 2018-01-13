@@ -1,5 +1,6 @@
 import React from 'react';
 import Artist from './artist';
+import Album from './album';
 
 class Artists extends React.Component {
   constructor() {
@@ -35,7 +36,7 @@ class Artists extends React.Component {
       <ul>
         {this.state.albums.map((album, index) => {
           return (
-            <li key={index}>{album.name}</li>
+            <Album key={index} album={album}/>
           );
         })}
       </ul>
