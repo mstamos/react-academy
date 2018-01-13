@@ -5,11 +5,13 @@ class Artists extends React.Component {
   constructor() {
     super();
     this.state= {
-      artists: []
+      artists: [],
+      albums: []
     };
 
     this.displayArtists = this.displayArtists.bind(this);
     this.removeArtist = this.removeArtist.bind(this);
+    this.displayAlbums = this.displayAlbums.bind(this);
   }
 
   removeArtist(id) {
@@ -28,6 +30,18 @@ class Artists extends React.Component {
     )
   }
 
+  displayAlbums() {
+    return (
+      <ul>
+        {this.state.albums.map((album, index) => {
+          return (
+            <li key={index}>{album.name}</li>
+          );
+        })}
+      </ul>
+    )
+  }
+
   componentDidMount() {
     fetch('http://localhost:3001/artists')
       .then(res => res.json())
@@ -35,7 +49,14 @@ class Artists extends React.Component {
         this.setState({
           artists
         });
-      });
+        return fetch('http://localhost:3001/artists/' + artists[0].id + '/albums');
+      })
+      .then(res => res.json())
+      .then(albums => {
+        this.setState({
+          albums
+        });
+      })
   }
 
   render() {
@@ -43,6 +64,9 @@ class Artists extends React.Component {
       <div>
         Artists
         {this.displayArtists()}
+        <p></p>
+        Show Albums of Iron Maiden
+        {this.displayAlbums()}
       </div>
     );
   }
