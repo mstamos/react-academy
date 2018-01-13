@@ -8,6 +8,17 @@ class Artists extends React.Component {
     };
 
     this.displayArtists = this.displayArtists.bind(this);
+    this.removeArtist = this.removeArtist.bind(this);
+  }
+
+  removeArtist(id) {
+    const artists = this.state.artists;
+
+    const newArtists = artists.filter(artist =>  artist.id !== id);
+
+    this.setState({
+      artists: newArtists
+    });
   }
 
   displayArtists() {
@@ -16,7 +27,7 @@ class Artists extends React.Component {
         {this.state.artists.map((artist, index) => {
           return <li key={index}>
             {artist.name}
-            <button>Remove</button>
+            <button onClick={() => this.removeArtist(artist.id)}>Remove</button>
            </li>
         })}
       </ul>
