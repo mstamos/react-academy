@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Artists from './artists';
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Artists />, document.getElementById('root'));
