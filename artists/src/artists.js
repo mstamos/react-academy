@@ -1,4 +1,5 @@
 import React from 'react';
+import Artist from './artist';
 
 class Artists extends React.Component {
   constructor() {
@@ -12,12 +13,8 @@ class Artists extends React.Component {
   }
 
   removeArtist(id) {
-    const artists = this.state.artists;
-
-    const newArtists = artists.filter(artist =>  artist.id !== id);
-
     this.setState({
-      artists: newArtists
+      artists: this.state.artists.filter(artist =>  artist.id !== id)
     });
   }
 
@@ -25,10 +22,7 @@ class Artists extends React.Component {
     return (
       <ul>
         {this.state.artists.map((artist, index) => {
-          return <li key={index}>
-            {artist.name}
-            <button onClick={() => this.removeArtist(artist.id)}>Remove</button>
-           </li>
+          return <Artist key={index} artist={artist} removeArtist={this.removeArtist}/>
         })}
       </ul>
     )
@@ -50,8 +44,7 @@ class Artists extends React.Component {
         Artists
         {this.displayArtists()}
       </div>
-    )
-
+    );
   }
 }
 
