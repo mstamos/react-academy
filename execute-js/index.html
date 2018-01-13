@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <title>React Academy</title>
+</head>
+<h1>React Academy</h1>
+<script>
+  const artists = [
+    {
+      name: "Iron Maiden",
+      year: 1975
+    },
+    {
+      name: "Metallica",
+      year: 1981
+    },
+    {
+      name: "Megadeth",
+      year: 1983
+    }
+  ];
+
+const artistsWithGenre = artists
+  .map(function(artist) {
+    return {
+      ...artist,
+      genre: "Heavy Metal"
+    };
+  })
+  .filter(function(artist) {
+    return artist.year > 1976;
+  })
+
+console.log(artistsWithGenre);
+</script>
+
+</html>
