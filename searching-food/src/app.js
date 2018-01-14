@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodList from './foodList';
+import SearchBar from './searchBar';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class App extends React.Component {
       foods: props.foods
     };
 
-    this.displayFoods = this.displayFoods.bind(this);
     this.filterFoods = this.filterFoods.bind(this);
   }
 
@@ -28,10 +28,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <input
-          type='text'
-          placeholder='Search for Food'
-          onChange={this.filterFoods}
+        <SearchBar
+          onInputChange={this.filterFoods}
         />
         <FoodList
           foods={this.state.foods}
