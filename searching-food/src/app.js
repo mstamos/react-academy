@@ -1,4 +1,5 @@
 import React from 'react';
+import FoodList from './foodList';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,12 +11,6 @@ class App extends React.Component {
 
     this.displayFoods = this.displayFoods.bind(this);
     this.filterFoods = this.filterFoods.bind(this);
-  }
-
-  displayFoods() {
-    return this.state.foods.map((food, index) => {
-      return <li key={index}>{food.name}</li>;
-    })
   }
 
   filterFoods(event) {
@@ -38,9 +33,9 @@ class App extends React.Component {
           placeholder='Search for Food'
           onChange={this.filterFoods}
         />
-        <ul>
-          {this.displayFoods()}
-        </ul>
+        <FoodList
+          foods={this.state.foods}
+        />
       </div>
     )
   }
