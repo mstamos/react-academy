@@ -25,4 +25,4 @@ const foods = [
   }
 ];
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App foods={foods}/>, document.getElementById('root'));
