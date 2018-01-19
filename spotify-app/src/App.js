@@ -71,26 +71,34 @@ class App extends Component {
   }
 
   render() {
+    const {favorite, artists} = this.state;
+    const favoriteLength = favorite.length;
+    const favoriteCounter = favoriteLength > 0
+      ? `(${favoriteLength})`
+      : '';
+
     return (
       <Router>
         <div className="App">
           <ul>
             <li><Link to='/'>Search</Link></li>
-            <li><Link to='/favorite'>Favorite</Link></li>
+            <li><Link to='/favorite'>Favorite {favoriteCounter}</Link></li>
           </ul>
 
-          <Route
-            path='/'
-            render={() => {
-              return <Home
-                  onInputChange={this.onInputChange}
-                  onSearch={this.onSearch}
-                  onSelectArtist={this.onSelectArtist}
-                  artists={this.state.artists}
-                />
+          <div className='main'>
+            <Route
+              path='/'
+              render={() => {
+                return <Home
+                    onInputChange={this.onInputChange}
+                    onSearch={this.onSearch}
+                    onSelectArtist={this.onSelectArtist}
+                    artists={artists}
+                  />
+                }
               }
-            }
-           />
+            />
+          </div>
         </div>
       </Router>
     );
