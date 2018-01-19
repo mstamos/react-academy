@@ -8,11 +8,13 @@ class App extends Component {
     super();
     this.state = {
       searchText: '',
-      artists: []
+      artists: [],
+      favorite: []
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.onSelectArtist = this.onSelectArtist.bind(this);
   }
 
   onInputChange(event) {
@@ -24,10 +26,48 @@ class App extends Component {
       .then(response => response.json())
       .then(artists => {
         this.setState({
-          artists,
+          artists: artists.map(artist => ({
+            selected: false,
+            ...artist
+          })),
           searchText: ''
         });
       });
+  }
+
+  onSelectArtist(artistId) {
+    let favoriteArtists = [];
+    const {artists, favorite} = this.state;
+    let selectedArtist = artists.find(artist => artist.id === artistId);
+    const indexOfSelectedArtist = artists.indexOf(selectedArtist);
+    const indexOfFavoriteArtist = favorite.indexOf(selectedArtist);
+
+    if (selectedArtist) {
+      selectedArtist = {
+        ...selectedArtist,
+        selected: !selectedArtist.selected
+      };
+
+      favoriteArtists = selectedArtist.selected && indexOfFavoriteArtist < 0
+        ? [
+            ...favorite,
+            selectedArtist
+          ]
+        :
+          [
+            ...favorite.slice(0, indexOfFavoriteArtist),
+            ...favorite.slice(indexOfFavoriteArtist+ 1)
+          ];
+    }
+
+    this.setState({
+      artists: [
+        ...artists.slice(0, indexOfSelectedArtist),
+        selectedArtist,
+        ...artists.slice(indexOfSelectedArtist + 1)
+      ],
+      favorite: favoriteArtists
+    });
   }
 
   render() {
@@ -35,26 +75,22 @@ class App extends Component {
       <Router>
         <div className="App">
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/favorite">Favorite</Link>
-            </li>
+            <li><Link to='/'>Search</Link></li>
+            <li><Link to='/favorite'>Favorite</Link></li>
           </ul>
 
           <Route
-            path="/"
+            path='/'
             render={() => {
-              return (
-                <Home
-                  artists={this.state.artists}
+              return <Home
                   onInputChange={this.onInputChange}
                   onSearch={this.onSearch}
+                  onSelectArtist={this.onSelectArtist}
+                  artists={this.state.artists}
                 />
-              );
-            }}
-          />
+              }
+            }
+           />
         </div>
       </Router>
     );
