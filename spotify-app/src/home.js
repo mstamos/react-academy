@@ -1,12 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Search from './search';
+import Artists from './artists';
 
-const Home = ({onSearch, onInputChange}) => {
+const Home = ({artists, onInputChange, onSearch}) => {
   return (
     <div>
-      <input type='text' onChange={onInputChange}/>
-      <button className='btn-small' onClick={onSearch}>Search</button>
+      <Search
+        onInputChange={onInputChange}
+        onSearch={onSearch}
+      />
+
+      {artists.length > 0 &&
+        <Artists
+          artists={artists}
+        />
+      }
     </div>
-  )
+  );
 }
 
 export default Home;

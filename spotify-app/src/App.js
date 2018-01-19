@@ -48,6 +48,7 @@ class App extends Component {
             render={() => {
               return (
                 <Home
+                  artists={this.state.artists}
                   onInputChange={this.onInputChange}
                   onSearch={this.onSearch}
                 />
