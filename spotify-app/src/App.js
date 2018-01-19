@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+import Home from './home';
 import './index.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <ul>
-          <li><a className="active" href="#home">Home</a></li>
-          <li><a href="#news">Favorite</a></li>
-        </ul>
+      <Router>
+        <div className="App">
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/favorite'>Favorite</Link></li>
+          </ul>
 
-        Let get the party started!
-      </div>
+          <Route path='/' component={Home}/>
+        </div>
+      </Router>
     );
   }
 }
