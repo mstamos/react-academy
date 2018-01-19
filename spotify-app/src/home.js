@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 
-class Home extends Component {
-  render() {
-    return (
-      <div>
-        <input/>
-      </div>
-    )
-  }
+const Home = ({onSearch, onInputChange}) => {
+  return (
+    <div>
+      <input type='text' onChange={onInputChange}/>
+      <button className='btn-small' onClick={onSearch}>Search</button>
+    </div>
+  )
 }
 
 export default Home;
