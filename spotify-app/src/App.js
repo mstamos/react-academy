@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Favorite from './favorite';
 import Home from './home';
 import './index.css';
 
@@ -87,6 +88,7 @@ class App extends Component {
 
           <div className='main'>
             <Route
+              exact
               path='/'
               render={() => {
                 return <Home
@@ -97,6 +99,15 @@ class App extends Component {
                   />
                 }
               }
+            />
+            <Route
+              path='/favorite'
+              render={() => {
+                return <Favorite
+                  onSelectArtist={this.onSelectArtist}
+                  artists={favorite}
+                />
+              }}
             />
           </div>
         </div>
