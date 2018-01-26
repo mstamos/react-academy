@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export const Emoji = () => <h3>:-)</h3>;
+export const Emoji = () => <h3 className='emoji'>:-)</h3>;
 
 class App extends Component {
 

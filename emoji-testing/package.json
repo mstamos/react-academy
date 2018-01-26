@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "cypress": "^1.4.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.0.5",
     "react-scripts": "1.1.0"
@@ -15,6 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "e2e": "cypress open"
   }
 }
